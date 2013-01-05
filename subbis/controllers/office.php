@@ -1,20 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Office extends CI_Controller {
-
-
 	
 	function  __construct()
-    {
-        
+    {        
 		parent::__construct();
 		//$this->load->model('Tools_model');
 		//$this->load->model('Tribe_model');
         $this->output->enable_profiler(TRUE);
-
-        // some change...
-
-        // here is another change...
      }
 
 
@@ -22,11 +15,6 @@ class Office extends CI_Controller {
 	public function index() 
 	{
 		$this->load->view('office/index');
-	}
-	
-	public function yosvel() 
-	{
-		echo "vamos hermanito...";
 	}
 	
 	
@@ -43,15 +31,13 @@ class Office extends CI_Controller {
 			'subbis' =>	$subbis
 			);
 		
-		$this->load->view('office/subbis/list',$data);
-		
+		$this->load->view('office/subbis/list', $data);		
 	}
 	
 	
 	/**
 	*	Create a new Subbi from Zero - not a pre-entered one
-	*/
-	
+	*/	
 	public function subbis_new()
 	{
 	
@@ -67,8 +53,7 @@ class Office extends CI_Controller {
 	
 		$this->load->view('office/subbis/new',$data);
 	}
-	
-	
+		
 	/**
 	*	Save new subbi 
 	*/
@@ -98,20 +83,16 @@ class Office extends CI_Controller {
 			'created_on' 		=> date('Y-m-d H:i:s')
 			);
 		
-		$this->Subbis_model->create($save);
-			
+		$this->Subbis_model->create($save);			
 		
-		redirect('office/subbis');
-		
+		redirect('office/subbis');		
 	}
 	
 	/**
 	*	Edit a  Subbi 
-	*/
-	
+	*/	
 	public function subbis_edit($id)
-	{
-	
+	{	
 		$this->load->model('Promoter_model');
 		$this->load->model('Campaign_model');
 		$this->load->model('Subbis_model');
@@ -126,17 +107,13 @@ class Office extends CI_Controller {
 			);
 	
 		$this->load->view('office/subbis/edit',$data);
-	}
-	
-	
-	
+	}	
+		
 	/**
 	*	update a subbi 
 	*/
 	public function subbi_update()
-	{
-		
-		
+	{	
 		$this->load->model('Subbis_model');
 		
 		$save = array(
@@ -161,16 +138,12 @@ class Office extends CI_Controller {
 			);
 		
 		$this->Subbis_model->update($save,$this->input->post('subbis_id'));
-			
 		
 		redirect('office/subbis');
 	}
-
-	
 	
 	public function email()
-	{
-	
+	{	
 		$this->output->enable_profiler(TRUE);
 		
 		// send email
@@ -187,12 +160,9 @@ class Office extends CI_Controller {
 		
 		$this->email->message($value);	
 		
-		$this->email->send();
-		
-		//echo $this->email->print_debugger();
-		
+		$this->email->send();		
+		//echo $this->email->print_debugger();		
 		
 		$this->load->view('website/thanks');
 	}
 }
-
