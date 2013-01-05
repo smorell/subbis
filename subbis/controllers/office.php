@@ -155,7 +155,6 @@ class Office extends CI_Controller {
 			
 		
 		redirect('office/subbis');
-		
 	}
 
 	
