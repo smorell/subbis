@@ -22,6 +22,11 @@ class Office extends CI_Controller {
 		$this->load->view('office/index');
 	}
 	
+	public function yosvel() 
+	{
+		echo "vamos hermanito...";
+	}
+	
 	
 	/**
 	*	List subbis
